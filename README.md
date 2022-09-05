@@ -32,9 +32,9 @@ In order to obtain a local copy of this repository run:
 
 - You can run test suites on this project by running `npm test`
 
-## Live Demo
+<!-- ## Live Demo -->
 
-[Live Demo Link](https://bucureva87.github.io/to-do-list/dist/)
+<!-- [Live Demo Link](https://bucureva87.github.io/to-do-list/dist/) -->
 
 <!-- ## Live Preview -->
 
