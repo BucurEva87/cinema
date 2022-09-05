@@ -48,7 +48,7 @@ In order to obtain a local copy of this repository run:
 - Twitter: [@BucurEva](https://twitter.com/BucurEva)
 - LinkedIn: [Eva-Lavinia Bucur](https://www.linkedin.com/in/eva-lavinia-bucur-89626b1b7)
 
-# 👤 **Bitsindou Van Inayat-khan**
+👤 **Bitsindou Van Inayat-khan**
 
 - GitHub: [@Khanetmoi](https://github.com/Khanetmoi)
 - Twitter: [@InayatVan](https://twitter.com/InayatVan)
