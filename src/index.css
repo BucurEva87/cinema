@@ -13,3 +13,31 @@
 html {
   font-size: 10px;
 }
+
+body {
+  font-size: 2rem;
+}
+
+ul {
+  display: flex;
+  justify-content: space-between;
+  width: 80vw;
+  margin: 2rem auto 0 auto;
+}
+
+li {
+  list-style: none;
+}
+
+main {
+  background-color: cadetblue;
+  height: 87vh;
+}
+
+footer {
+  border: 0.1rem solid;
+  padding: 2rem;
+  position: fixed;
+  width: 100%;
+  top: 93vh;
+}
