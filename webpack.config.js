@@ -25,14 +25,14 @@ module.exports = {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource',
         generator: {
-          filename: 'assets/fonts/[name].[ext]',
+          filename: 'assets/fonts/[name][ext]',
         },
       },
       {
-        test: /\.(png|gif|jpg|jpeg)$/i,
+        test: /\.(png|gif|jpg|jpeg|svg)$/i,
         type: 'asset/resource',
         generator: {
-          filename: 'assets/img/[name].[ext]',
+          filename: 'assets/img/[name][ext]',
         },
       },
     ],

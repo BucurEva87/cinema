@@ -23,7 +23,7 @@ export default {
         } else if (value) {
           element.classList.add(value);
         }
-      } else if (prop === 'data' && typeof value === 'object') {
+      } else if (prop === 'info' && typeof value === 'object') {
         Object.entries(value).forEach(([prop, value]) => {
           element.dataset[prop] = value;
         });
