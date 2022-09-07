@@ -47,8 +47,6 @@ popupModal.addEventListener('click', (e) => {
 
 // Submit a comment
 utils.qs('button', popupModal).addEventListener('click', () => {
-  console.log('Button was clicked');
-
   const username = utils.qs('#username');
   const comment = utils.qs('#comment');
   const usernameError = utils.qs('#usernameError');
