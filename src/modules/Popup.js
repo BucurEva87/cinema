@@ -1,5 +1,6 @@
 import utils from './utils.js';
 import closeIcon from '../assets/img/close.svg';
+import countComments from './countComments.js';
 
 class Popup {
   constructor() {
@@ -49,7 +50,7 @@ class Popup {
     }));
 
     const h2 = utils.qsa('h2', this.container)[1];
-    h2.textContent = `Comments (${movie.comments.length})`;
+    h2.textContent = `Comments (${countComments(movie)})`;
 
     const ul = utils.qs('ul', this.container);
     utils.qsa('li', ul).forEach((li) => li.remove());

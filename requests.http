@@ -7,3 +7,11 @@ get https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/uxSe
 ###
 
 get https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/uxSepZBDcek163Ux7n5I/comments?item_id=The%20Shawshank%20Redemption
+
+###
+
+post https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/uxSepZBDcek163Ux7n5I/comments
+
+Content-Type: application/json
+
+item_id='The Shawshank Redemption'&username='test'&comment='This is a test comment'

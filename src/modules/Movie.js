@@ -1,6 +1,7 @@
 import utils from './utils.js';
 import config from './config.js';
 import Comment from './Comment.js';
+import popup from './Popup.js';
 
 const { INVOLVMENT_APP_ID, INVOLVMENT_BASE_URL, MOVIE_BASE_POSTER_PATH } = config;
 
@@ -37,7 +38,7 @@ export default class Movie {
     this.releaseDate = show.release_date;
     this.voteAverage = show.vote_average;
     this.voteCount = show.vote_count;
-    this.comments = show.comments;
+    this.comments = [];
   }
 
   async like() {
@@ -59,6 +60,28 @@ export default class Movie {
       const card = utils.qs(`article[data-show="${this.title}"]`);
 
       utils.qs('span', card).dataset.likes = this.likes;
+    }
+  }
+
+  async getComments() {
+    try {
+      const response = await fetch(`${INVOLVMENT_BASE_URL}/apps/${INVOLVMENT_APP_ID}/comments?item_id=${encodeURIComponent(this.title)}`);
+      const result = await response.json();
+
+      if (!('error' in result)) {
+        this.comments = [];
+
+        result.forEach((c) => this.comments.push(new Comment({
+          username: c.username,
+          comment: c.comment,
+          creation_date: c.creation_date,
+        })));
+      }
+
+      popup.populate(this);
+    } catch (e) {
+      popup.populate(this);
+      throw new Error(e.message);
     }
   }
 

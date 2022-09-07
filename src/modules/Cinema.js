@@ -2,7 +2,7 @@ import Movie from './Movie.js';
 import config from './config.js';
 import Card from './Card.js';
 import utils from './utils.js';
-import Comment from './Comment.js';
+import countMovies from './countMovies.js';
 
 const {
   INVOLVMENT_APP_ID, INVOLVMENT_BASE_URL, MOVIE_API_KEY, MOVIE_POPULAR,
@@ -22,38 +22,22 @@ class Cinema {
     response = await fetch(`${MOVIE_POPULAR}${MOVIE_API_KEY}`);
     const result = await response.json();
 
-    result.results.slice(0, 7).forEach(async (r) => {
+    result.results.forEach(async (r) => {
       const likes = this.likes.find((l) => l.item_id === r.title);
-
-      const comments = [];
-
-      try {
-        const response = await fetch(`${INVOLVMENT_BASE_URL}/apps/${INVOLVMENT_APP_ID}/comments?item_id=${encodeURIComponent(r.title)}`);
-        const result = await response.json();
-
-        if (!('error' in result)) {
-          result.forEach((c) => comments.push(new Comment({
-            username: c.username,
-            comment: c.comment,
-            creation_date: c.creation_date,
-          })));
-        }
-      } catch (e) {
-        throw new Error(e.message);
-      }
 
       if (likes) r = { ...r, likes: likes.likes };
 
-      const movie = new Movie({ ...r, comments });
+      const movie = new Movie(r);
       const card = new Card(movie);
 
       this.list.push(movie);
       card.display();
     });
 
-    setTimeout(() => {
-      this.sortGenres();
-    }, 5000);
+    this.sortGenres();
+
+    // Count the movies in the page and show their number
+    utils.qsa('header li').reverse()[0].textContent = `Total Movies: ${countMovies(this.list)}`;
   }
 
   sortGenres() {

@@ -33,7 +33,7 @@ theater.addEventListener('click', (e) => {
 
   const movie = cinema.list.find((m) => m.title === target.closest('article').dataset.show);
 
-  popup.populate(movie);
+  movie.getComments();
 });
 
 // Listen for popup close on closeBtn click
