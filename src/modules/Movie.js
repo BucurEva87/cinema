@@ -1,6 +1,8 @@
+import utils from './utils.js';
 import config from './config.js';
+import Comment from './Comment.js';
 
-const { MOVIE_BASE_POSTER_PATH } = config;
+const { INVOLVMENT_APP_ID, INVOLVMENT_BASE_URL, MOVIE_BASE_POSTER_PATH } = config;
 
 const genres = {
   12: 'Adventure',
@@ -25,12 +27,67 @@ const genres = {
 };
 
 export default class Movie {
-  constructor(show, likes, comments) {
+  constructor(show) {
     this.title = show.title;
     this.genres = show.genre_ids.map((g) => genres[g]);
     this.image = `${MOVIE_BASE_POSTER_PATH}${show.poster_path}`;
     this.overview = show.overview;
-    this.likes = likes;
-    this.comments = comments;
+    this.likes = show.likes ?? 0;
+    this.popularity = show.popularity;
+    this.releaseDate = show.release_date;
+    this.voteAverage = show.vote_average;
+    this.voteCount = show.vote_count;
+    this.comments = show.comments;
+  }
+
+  async like() {
+    const response = await fetch(
+      `${INVOLVMENT_BASE_URL}/apps/${INVOLVMENT_APP_ID}/likes`,
+      {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ item_id: this.title }),
+      },
+    );
+
+    if (response.status === 201) {
+      this.likes += 1;
+
+      const card = utils.qs(`article[data-show="${this.title}"]`);
+
+      utils.qs('span', card).dataset.likes = this.likes;
+    }
+  }
+
+  async postComment({ username, comment }) {
+    const response = await fetch(
+      `${INVOLVMENT_BASE_URL}/apps/${INVOLVMENT_APP_ID}/comments`,
+      {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          item_id: this.title,
+          username,
+          comment,
+        }),
+      },
+    );
+
+    if (response.status === 201) {
+      const d = new Date();
+
+      this.comments.push(new Comment({
+        username,
+        comment,
+        creation_date: `${d.getUTCFullYear()}-${d.getUTCMonth() + 1}-${d.getUTCDate()}`,
+      }));
+      this.comments[this.comments.length - 1].display(utils.qs('#popup'));
+    }
   }
 }

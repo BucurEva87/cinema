@@ -2,21 +2,21 @@ import utils from './utils.js';
 import heart from '../assets/img/heart.svg';
 
 export default class Card {
-  constructor(title, image, likes, comments) {
-    this.title = title;
-    this.image = image;
-    this.likes = likes;
-    this.comments = comments;
+  constructor(movie) {
+    this.movie = movie;
   }
 
   display() {
-    const article = utils.createElement({ tagName: 'article' });
+    const article = utils.createElement({
+      tagName: 'article',
+      info: { show: this.movie.title },
+    });
 
     article.appendChild(
       utils.createElement({
         tagName: 'img',
-        src: this.image,
-        alt: this.title,
+        src: this.movie.image,
+        alt: this.movie.title,
       }),
     );
 
@@ -25,7 +25,7 @@ export default class Card {
     div.appendChild(
       utils.createElement({
         tagName: 'h2',
-        textContent: this.title,
+        textContent: this.movie.title,
       }),
     );
 
@@ -35,7 +35,7 @@ export default class Card {
 
     divLikes.appendChild(utils.createElement({
       tagName: 'span',
-      info: { likes: this.likes },
+      info: { likes: this.movie.likes },
     }));
     divLikes.appendChild(
       utils.createElement({
