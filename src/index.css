@@ -7,9 +7,256 @@
 }
 
 :root {
-
+  --color-black: #000;
 }
 
 html {
   font-size: 10px;
+}
+
+body {
+  font-size: 2rem;
+  transition: all 0.5s;
+}
+
+.darkened {
+  background-color: #333;
+}
+
+header {
+  padding: 2rem 0;
+  position: fixed;
+  z-index: 100;
+  background-color: white;
+  top: 0;
+  left: 19vw;
+  width: 62vw;
+}
+
+ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 60vw;
+  margin: 2rem auto 0 auto;
+  list-style: none;
+}
+
+#movie-container {
+  width: 60vw;
+  margin: 0 auto;
+  margin-top: 13.3rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+}
+
+article {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: #ddd;
+  border-radius: 3rem;
+  overflow: hidden;
+  min-height: 50rem;
+  box-shadow: 1rem 1rem 1rem var(--color-black);
+}
+
+article img {
+  width: 100%;
+  height: 20rem;
+  margin-bottom: 2rem;
+}
+
+article div:not(.div-likes) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4rem;
+}
+
+article div h2 {
+  justify-self: flex-start;
+  margin-left: 1.5rem;
+  font-size: 2.2rem;
+}
+
+article .div-likes {
+  justify-self: flex-end;
+  margin-right: 1.5rem;
+  position: relative;
+}
+
+article div object {
+  width: 4rem;
+  height: 4rem;
+  pointer-events: none;
+}
+
+article div span::before {
+  content: attr(data-likes);
+  width: 4rem;
+  height: 4rem;
+  color: white;
+  position: absolute;
+  left: 0;
+  font-size: 1.6rem;
+  text-align: center;
+  line-height: 4rem;
+  font-weight: bold;
+  pointer-events: none;
+}
+
+article div span:hover::before {
+  display: none;
+}
+
+article div object:hover {
+  filter: invert(11%) sepia(97%) saturate(7496%) hue-rotate(4deg) brightness(97%) contrast(113%);
+}
+
+article button {
+  width: 80%;
+  margin: 4% auto;
+  border: 0.3rem solid var(--color-black);
+  background-color: #72e07f;
+  padding: 1rem;
+  text-align: center;
+  font-size: 2rem;
+  border-radius: 3rem;
+}
+
+footer {
+  border: 0.1rem solid var(--color-black);
+  padding: 2rem;
+  width: 100%;
+  background-color: white;
+  margin-top: 3rem;
+}
+
+.hidden {
+  display: none;
+}
+
+#popup {
+  box-sizing: content-box;
+  position: fixed;
+  width: 49.6vw;
+  top: 0;
+  left: 19vw;
+  bottom: 0;
+  padding: 0 6.2vw 5rem;
+  background-color: white;
+  overflow-y: auto;
+  text-align: center;
+}
+
+#popup img {
+  width: 100%;
+  height: 40vh;
+}
+
+#popup h2 {
+  margin: 1rem 0;
+}
+
+#popup .info-container {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    'genre      airing'
+    'popularity rating';
+  gap: 1rem;
+  color: #333;
+  font-style: italic;
+  font-weight: bold;
+}
+
+#popup #spanGenres {
+  grid-area: genre;
+}
+
+#popup #spanAiring {
+  grid-area: airing;
+}
+
+#popup #spanPopularity {
+  grid-area: popularity;
+}
+
+#popup #spanRating {
+  grid-area: rating;
+}
+
+#popup object {
+  font-size: 2.4rem;
+  font-weight: bold;
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
+  pointer-events: none;
+}
+
+#popup #closeBtnWrapper {
+  background-color: red;
+  border-radius: 50%;
+  height: 3rem;
+  width: 3rem;
+  cursor: pointer;
+  position: absolute;
+  top: 2rem;
+  right: 15rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#popup ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 80%;
+  gap: 0.3rem;
+}
+
+li {
+  padding: 0.5rem;
+  width: 100%;
+}
+
+#popup li:nth-child(odd) {
+  background-color: #fccb1d;
+}
+
+#popup li:nth-child(even) {
+  background-color: #d4d4f7;
+}
+
+#popup input,
+#popup textarea {
+  display: block;
+  margin: 0 auto 2rem;
+  width: 50%;
+  padding: 1rem;
+}
+
+#popup button {
+  width: 36%;
+  border: 0.2rem solid var(--color-black);
+  padding: 1rem;
+  background-color: #ddd;
+  transition: translate 0.2s;
+}
+
+#popup button:active {
+  translate: 0.2rem 0.2rem;
+}
+
+#usernameError,
+#commentError {
+  color: red;
+  margin: 0 0 0 2rem;
+  font-weight: bold;
+  font-size: 1.6rem;
 }
