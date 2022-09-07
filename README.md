@@ -2,11 +2,9 @@
 
 # Cinema
 
-_We will add the description later_
+## Description
 
-# Testing Jest
-
-> Testing certain functions and methods using Jest
+An application for retrieving details of movies from an API associated to a database. Cinema allows users to leave comments for their favorite movies and also show their appreciation through a like (or more).
 
 ## Built With
 
@@ -39,6 +37,10 @@ In order to obtain a local copy of this repository run:
 ## Live Preview
 
 ![Live Preview](https://i.postimg.cc/cHncpKLv/Screenshot-from-2022-09-07-22-28-09.png)
+
+## Project video
+
+<!-- link to the video recording -->
 
 ## Authors
 
