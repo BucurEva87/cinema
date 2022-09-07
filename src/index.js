@@ -3,7 +3,6 @@ import utils from './modules/utils.js';
 import cinema from './modules/Cinema.js';
 import logo from './assets/img/logo.png';
 import popup from './modules/Popup.js';
-import Comment from './modules/Comment.js';
 
 const theater = utils.qs('#movie-container');
 const popupModal = utils.qs('#popup');
@@ -18,7 +17,7 @@ utils.qs('#logo a').appendChild(utils.createElement({
 theater.addEventListener('click', (e) => {
   const { target } = e;
 
-  if (target.tagName !== 'OBJECT') return;
+  if (!target.classList.contains('heart')) return;
 
   const title = target.closest('article').dataset.show;
   const movie = cinema.list.find((m) => m.title === title);
@@ -57,25 +56,28 @@ utils.qs('button', popupModal).addEventListener('click', () => {
 
   usernameError.textContent = '';
   commentError.textContent = '';
+  usernameError.classList.add('hidden');
+  commentError.classList.add('hidden');
 
   // Validation
-  const response = Comment.validate(username.value, comment.value);
-
-  if (response.type !== 'success') {
-    const [usernameErr, commentErr] = response.errors;
-    if (response.fields.includes('username')) {
-      usernameError.textContent = usernameErr;
-    }
-    if (response.fields.includes('comment')) {
-      commentError.textContent = commentErr;
-    }
+  if (!username.value.trim()) {
+    usernameError.textContent = 'An username must be provided';
+    usernameError.classList.remove('hidden');
+    return;
+  }
+  if (!comment.value.trim()) {
+    commentError.textContent = 'The comment can not be empty';
+    commentError.classList.remove('hidden');
     return;
   }
 
-  username.value = '';
-  comment.value = '';
-
   const movie = cinema.list.find((m) => m.title === utils.qs('h2', popupModal).textContent);
 
-  movie.postComment(response.values[0], response.values[1]);
+  movie.postComment({
+    username: username.value.trim(),
+    comment: comment.value.trim(),
+  });
+
+  username.value = '';
+  comment.value = '';
 });

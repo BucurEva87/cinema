@@ -85,9 +85,9 @@ export default class Movie {
       this.comments.push(new Comment({
         username,
         comment,
-        creation_date: `${d.getUTCFullYear()}-${d.getUTCMonth() + 1}-${d.getUTCDate()}`,
+        creation_date: `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, '0')}-${String(d.getUTCDate()).padStart(2, '0')}`,
       }));
-      this.comments[this.comments.length - 1].display(utils.qs('#popup'));
+      this.comments[this.comments.length - 1].display(utils.qs('#popup ul'));
     }
   }
 }

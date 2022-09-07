@@ -43,16 +43,17 @@ class Cinema {
       }
 
       if (likes) r = { ...r, likes: likes.likes };
-      if (comments.length) r = { ...r, comments };
 
-      const movie = new Movie(r);
+      const movie = new Movie({ ...r, comments });
       const card = new Card(movie);
 
       this.list.push(movie);
       card.display();
     });
 
-    this.sortGenres();
+    setTimeout(() => {
+      this.sortGenres();
+    }, 5000);
   }
 
   sortGenres() {
@@ -68,7 +69,7 @@ class Cinema {
     });
 
     top.sort((a, b) => b.movies - a.movies).slice(0, 3).forEach((p, i) => {
-      utils.qsa('li')[i + 1].innerText = `${p.genre} (${p.movies})`;
+      utils.qsa('header li')[i + 1].innerText = `${p.genre} (${p.movies})`;
     });
   }
 }

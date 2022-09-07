@@ -37,12 +37,14 @@ export default class Card {
       tagName: 'span',
       info: { likes: this.movie.likes },
     }));
-    divLikes.appendChild(
-      utils.createElement({
-        tagName: 'object',
-        data: heart,
-      }),
-    );
+    const parentDiv = utils.createElement({
+      class: 'heart',
+    });
+    parentDiv.appendChild(utils.createElement({
+      tagName: 'object',
+      data: heart,
+    }));
+    divLikes.appendChild(parentDiv);
 
     div.appendChild(divLikes);
     article.appendChild(div);

@@ -55,7 +55,7 @@ article {
   display: flex;
   flex-direction: column;
   width: 100%;
-  background-color: greenyellow;
+  background-color: #ddd;
   border-radius: 3rem;
   overflow: hidden;
   min-height: 50rem;
@@ -90,6 +90,7 @@ article .div-likes {
 article div object {
   width: 4rem;
   height: 4rem;
+  pointer-events: none;
 }
 
 article div span::before {
@@ -103,6 +104,7 @@ article div span::before {
   text-align: center;
   line-height: 4rem;
   font-weight: bold;
+  pointer-events: none;
 }
 
 article div span:hover::before {
@@ -110,7 +112,7 @@ article div span:hover::before {
 }
 
 article div object:hover {
-  filter: invert(16%) sepia(88%) saturate(3580%) hue-rotate(324deg) brightness(82%) contrast(94%);
+  filter: invert(11%) sepia(97%) saturate(7496%) hue-rotate(4deg) brightness(97%) contrast(113%);
 }
 
 article button {
@@ -249,4 +251,12 @@ li {
 
 #popup button:active {
   translate: 0.2rem 0.2rem;
+}
+
+#usernameError,
+#commentError {
+  color: red;
+  margin: 0 0 0 2rem;
+  font-weight: bold;
+  font-size: 1.6rem;
 }
