@@ -32,13 +32,13 @@ In order to obtain a local copy of this repository run:
 
 - You can run test suites on this project by running `npm test`
 
-<!-- ## Live Demo -->
+## Live Demo
 
-<!-- [Live Demo Link](https://bucureva87.github.io/to-do-list/dist/) -->
+[Live Demo Link](https://bucureva87.github.io/cinema/dist/)
 
-<!-- ## Live Preview -->
+## Live Preview
 
-<!-- ![Live Preview](https://i.postimg.cc/PqMCTCfp/Screenshot-from-2022-08-18-15-30-16.png) -->
+![Live Preview](https://i.postimg.cc/cHncpKLv/Screenshot-from-2022-09-07-22-28-09.png)
 
 ## Authors
 
