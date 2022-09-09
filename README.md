@@ -44,7 +44,7 @@ In order to obtain a local copy of this repository run:
 
 ## Project video
 
-[A video presentation of the project] (https://streamable.com/8n3oyt)
+[A video presentation of the project](https://streamable.com/8n3oyt)
 
 ## Authors
 
