@@ -26,6 +26,10 @@ In order to obtain a local copy of this repository run:
 - Install Node and Node Package Manager (NPM)
 - Install all the project dependencies running `npm i`
 
+### Running the project locally
+
+- You can run this project locally (localhost), after cloning the repository, by running `npm run start`
+
 ### Running tests
 
 - You can run test suites on this project by running `npm test`
